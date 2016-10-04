@@ -1,23 +1,13 @@
-function f = posterior(Y,data,xn,init)
+function f = posterior(Y,data,init,coeff,npt)
    
-cc = Y(1:end-1,1);   %parameters in [-1 1] space
-%
-%
-%   evaluate the polynomial using the current coeff 
-%   at the xcoordinates of the observations
+cc = Y(1:end-1);   %parameters in [-1 1] space
 
-% Evaluating the forward model (PC surrogate)
-if length(cc) == 1
-    G = cc(1) + 0*xn;
-elseif length(cc) == 2
-    G = cc(1) + cc(2)*xn;
-elseif length(cc) == 3
-    G = cc(1) + cc(2)*xn + cc(3)*xn.^2;
-elseif length(cc) == 4
-    G = cc(1) + cc(2)*xn + cc(3)*xn.^2 + cc(4)*xn.^3;
-elseif length(cc) == 5
-    G = cc(1) + cc(2)*xn + cc(3)*xn.^2 + cc(4)*xn.^3 + cc(5)*xn.^4;
+for k = 1:size(coeff,2)
+sshpc(k) = pce_eval(cc,coeff(:,k),npt);
 end
+
+obs = data(:,1);
+G = sshpc';
 %
 nreal = length(data);
 %
@@ -26,10 +16,10 @@ nreal = length(data);
 likl = 0 ;
 for ll = 1:nreal
 %
-nvarnce =Y(end,1);
+nvarnce =Y(end);
 %
 coef = 1/sqrt(2*pi*nvarnce);
-dif  = data(ll) - G(ll);
+dif  = obs(ll) - G(ll);
 fatt = exp(-dif^2/(2*nvarnce));
 likl = likl + log(coef * fatt);
 end
@@ -37,21 +27,10 @@ end
 %
 % Prior
 pr = zeros(length(Y),1);
-for i=1:size(Y,1)         
-     if i < size(Y,1)    
-            if  Y(i,1) < -100 || Y(i,1) > 100
-             pr(i) = 0;
-            else
-             pr(i) = 1/200;           
-            end
-    else
-        if  Y(i,1) < 0
-            pr(i) = 0;
-        else
-            pr(i) = 1/Y(i,1);  % Jeffery prior
-        end    
-    end
-end
+pr(1) = 1/2;
+pr(2) = 1/2;
+pr(3) = 1/Y(3);
+
 
 %
 f = log( prod(pr)  ) + likl;
