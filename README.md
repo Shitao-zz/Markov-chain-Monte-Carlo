@@ -27,7 +27,7 @@ http://shitao.github.io/adaptive-metropolis-algorithm/
 
 ### Infer the input condition uncertainty given SSH observational data
 
-<img src=“/fig/mcmc.png” align="center" width="900px"/>
+<img src="/fig/mcmc.png" align="center" width="900px"/>
 
 
 ### Reference
