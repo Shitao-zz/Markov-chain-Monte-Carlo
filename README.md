@@ -25,6 +25,11 @@ to stay near the high probability region.
 Check more details in my documentation
 http://shitao.github.io/adaptive-metropolis-algorithm/
 
+### Infer the input condition uncertainty given SSH observational data
+
+<img src=“/fig/mcmc.png” align="center" width="900px"/>
+
+
 ### Reference
 
 Haario, H., E. Saksman, and J. Tamminen, 2001: An adaptive metropolis algorithm.
