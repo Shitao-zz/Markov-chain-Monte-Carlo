@@ -25,10 +25,7 @@ to stay near the high probability region.
 Check more details in my documentation
 http://shitao.github.io/adaptive-metropolis-algorithm/
 
-### Test case
-<img src="/fig/polynomial_test.png" align="center" width="900px"/>
-
-# Infer the input condition uncertainty given SSH observational data
+### Infer the input condition uncertainty given SSH observational data
 
 <img src="/fig/mcmc.png" align="center" width="900px"/>
 
