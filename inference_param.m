@@ -4,9 +4,6 @@ NN = 30
 load( ['data' num2str(NN)] )
 
 xdd = linspace(0,1,30);
-%ctt = [10 -2 7.5 -3.3 -3.2];
-%yp = ctt(1) + ctt(2)*xdd + ctt(3)*xdd.^2 + ctt(4)*xdd.^3 + ctt(5)*xdd.^4;
-%xp = xdd
 data = yp;
 
                   
