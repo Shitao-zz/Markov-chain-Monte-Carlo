@@ -32,6 +32,10 @@ http://shitao.github.io/adaptive-metropolis-algorithm/
 
 <img src="/fig/mcmc.png" align="center" width="900px"/>
 
+An example to include the grided-SSH data for only 1 day.
+
+<img src="/fig/bayesian_data_day1.jpg" align="center" width="900px"/>
+
 
 ### Reference
 
